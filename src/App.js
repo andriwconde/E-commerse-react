@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
+import {BrowserRouter, Route} from 'react-router-dom';
+import InicioPage from "./pages/InicioPage"
+import RegistroPage from "./pages/RegistroPage"
+import LoginPage from "./pages/LoginPage"
+import DetailProduct from "./pages/DetailProductPage"
+import ABMPage from "./pages/ABMPage"
+import GlobalState from "./Context/GlobalState"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalState>
+      <BrowserRouter>
+        <Route path="/" exact component={InicioPage}/>
+        <Route path="/Registro" exact component={RegistroPage}/>
+        <Route path="/Login" exact component={LoginPage}/>
+        <Route path="/product/:id" exact component={DetailProduct}/>
+        <Route path="/catalogo" exact component={ABMPage}/>
+      </BrowserRouter>
+    </GlobalState>
   );
 }
 
